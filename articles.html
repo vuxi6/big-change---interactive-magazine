@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Articles – Big Changes: From the Past to the Future</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- نفس الخط -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #e6e0da;
+            --card-bg: #f3eee8;
+            --accent: #463f3a;
+            --accent-soft: #bcb8b1;
+            --text-main: #2d2b29;
+            --text-muted: #7a726c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Playfair Display", serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .page {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
+        }
+
+        /* NAV */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        
+         .logo-box {
+    height: 46px;                       /* ارتفاع ثابت مناسب للصورة */
+    max-width: 230px;                   /* عرض مستطيل يناسب اللوقو */
+    padding: 4px 10px;                  /* مسافة خفيفة حول الشعار */
+    border: 1px solid var(--accent-soft);
+    background: #f7f4f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box img {
+    height: 100%;                       /* يمشي مع الارتفاع */
+    width: auto;                        /* العرض يتكيّف مع النسبة الأصلية */
+    display: block;
+}
+
+
+        .nav-title {
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        .nav-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 14px;
+            font-size: 13px;
+        }
+
+        .nav-links a.current {
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+        }
+
+        /* HEADER */
+        .page-header {
+            background: var(--card-bg);
+            padding: 18px 18px 20px;
+            border-top: 3px solid var(--accent-soft);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+            margin-bottom: 20px;
+        }
+
+        .page-title {
+            font-size: 22px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            border: 1px solid var(--accent-soft);
+            background: #ece6df;
+            padding: 6px 12px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .control-btn:hover {
+            background: #e0d7cf;
+        }
+
+        .back-link {
+            font-size: 13px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-top: 22px;
+        }
+
+        .section-heading {
+            font-size: 18px;
+            margin-bottom: 4px;
+            color: var(--accent);
+        }
+
+        .section-note {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* ARTICLE ACCORDIONS */
+        .articles-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        @media (min-width: 720px) {
+            .articles-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        details.article {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-soft);
+            padding: 10px 12px;
+        }
+
+        details.article[open] {
+            background: #ece6df;
+        }
+
+        .article-summary {
+            list-style: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .article-title {
+            font-weight: 600;
+        }
+
+        .article-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+
+        .article-body {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .article-body p + p {
+            margin-top: 6px;
+        }
+
+        .article-key {
+            margin-top: 6px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .article-key span {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #6d665f;
+            padding-top: 12px;
+            border-top: 1px solid var(--accent-soft);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- NAV -->
+        <header class="nav">
+            <div class="nav-left">
+                <div class="logo-box">
+                    <img src="C:\Users\alasi\Desktop\eng_project\image\WhatsApp Image 2025-12-02 at 7.58.44 AM.jpeg">
+                </div>
+                <div>
+                    <div class="nav-title">Interactive Magazine</div>
+                    <div class="nav-subtitle">Articles collection</div>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Main page</a>
+                <a href="articles.html" class="current">Articles</a>
+            </nav>
+        </header>
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <h1 class="page-title">Articles</h1>
+            <p class="page-subtitle">
+                Each article below can be opened or closed. The texts are written in a light magazine style:
+                short but complete, with enough detail to show what changed from one period to another.
+            </p>
+
+            <div class="controls">
+                <button class="control-btn" id="openAll">Open all articles</button>
+                <button class="control-btn" id="closeAll">Close all articles</button>
+            </div>
+
+            <a class="back-link" href="index.html">Back to main page</a>
+        </section>
+
+        <!-- PAST ARTICLES -->
+        <section class="section">
+            <h2 class="section-heading">The Past</h2>
+            <p class="section-note">
+                Articles that describe slower, more local ways of living and learning.
+            </p>
+
+            <div class="articles-list">
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">One notebook for an entire subject</span>
+                        <span class="article-tag">Education</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            In many classrooms, students worked with very limited printed material.
+                            A single notebook could hold almost everything they needed for a subject:
+                            definitions, solved exercises, diagrams and even exam preparation notes.
+                            The notebook became a personal archive that grew with each lesson.
+                        </p>
+                        <p>
+                            Losing that notebook was not only an inconvenience; it meant losing months of effort.
+                            For this reason, students often treated their notebooks with great care, keeping them
+                            neatly organised and sometimes decorating them to show their importance.
+                            Learning was slower, but it was also more concentrated around a few key tools.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Knowledge felt more “physical” and fragile, because it lived in
+                            a few objects students had to protect.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Waiting for news at the mailbox</span>
+                        <span class="article-tag">Communication</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Before instant messaging, written letters carried both information and emotion.
+                            Families sometimes waited days or weeks to hear about exam results, job decisions
+                            or travel plans. Important letters were read slowly, sometimes aloud, so that
+                            the whole family could share the moment.
+                        </p>
+                        <p>
+                            The simple act of walking to the mailbox could bring a mix of hope and nervousness.
+                            Messages were shorter, but readers often revisited them many times, keeping them as
+                            personal archives of important moments. The delay between sending and receiving created
+                            space for reflection, imagination and sometimes worry.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Communication was slower, but each message received
+                            significant attention and care.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Shops that knew their customers by name</span>
+                        <span class="article-tag">City life</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Local stores played a central role in daily routines. Shop owners often knew
+                            customers personally, remembered their usual orders and sometimes extended informal credit.
+                            Purchases could turn into short conversations about family, school or neighbourhood news.
+                        </p>
+                        <p>
+                            This structure created a type of trust that was based not on digital records, but on
+                            repeated face-to-face interactions over time. A familiar shop could feel almost like
+                            an extension of home, especially for children who grew up visiting the same place for years.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Daily life was deeply connected to specific places and familiar people.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Evenings without screens</span>
+                        <span class="article-tag">Home life</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            In many households, evenings meant conversation, radio, board games or reading.
+                            Families often gathered in the same room instead of spreading out across separate devices.
+                            Time passed more slowly, but there were fewer competing sounds and images.
+                        </p>
+                        <p>
+                            While this did not automatically make life easier, it did shape a different rhythm:
+                            fewer rapid changes of focus and more time spent on a single task. People often remember
+                            those evenings as quiet but meaningful, connected more to voices and pages than to screens.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Time at home was structured around a limited set of shared activities.
+                        </p>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+        <!-- PRESENT ARTICLES -->
+        <section class="section">
+            <h2 class="section-heading">The Present</h2>
+            <p class="section-note">
+                Articles about constant connectivity and the way it shapes study, relationships and cities.
+            </p>
+
+            <div class="articles-list">
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Learning with many tabs open</span>
+                        <span class="article-tag">Education</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            A modern study session may involve several browser tabs, digital textbooks, recorded lessons
+                            and online exercises. Information is abundant, but attention is divided, especially when
+                            social platforms and entertainment are only one click away from school material.
+                        </p>
+                        <p>
+                            Students have to develop strategies to stay focused: turning off notifications, scheduling
+                            short breaks or choosing one platform at a time instead of switching constantly.
+                            Teachers also adapt, combining traditional explanations with digital tools in a way that
+                            tries to support understanding without overwhelming students.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> The main challenge is not access to information, but managing distraction.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Group chats that never sleep</span>
+                        <span class="article-tag">Social life</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Group chats can connect classmates, friends and relatives in real time, across different
+                            time zones. Messages, images and voice notes move quickly and rarely stop completely,
+                            especially in active school or family groups.
+                        </p>
+                        <p>
+                            While this can create a sense of support, it can also cause pressure to reply immediately
+                            and difficulty disconnecting, even late at night. Muting conversations or setting limits
+                            becomes a personal decision that many people struggle with.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Constant availability can blur the line between rest time and social time.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Invisible systems guiding movement</span>
+                        <span class="article-tag">Cities</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Traffic lights, surveillance cameras and sensor networks now play a larger role in how
+                            people move through a city. These systems collect data to reduce congestion, improve safety
+                            or optimise public services such as lighting and waste collection.
+                        </p>
+                        <p>
+                            Citizens may not think about these tools directly, but they experience their impact
+                            when a route is adjusted, a junction feels safer, or public transport becomes more reliable.
+                            Behind these changes are complex decisions about privacy, cost and priorities.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Modern urban life is influenced by software and infrastructure that
+                            operate mostly in the background.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Balancing productivity and rest</span>
+                        <span class="article-tag">Daily routine</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            With study apps, task managers and calendar alerts, many people feel pressure to be
+                            constantly productive. At the same time, entertainment and social media are always within reach,
+                            making it easy to slip from focused work into long periods of scrolling.
+                        </p>
+                        <p>
+                            Finding a healthy rhythm means deliberately setting limits on both work and leisure,
+                            instead of letting notifications decide the schedule. Simple habits, such as keeping
+                            the phone in another room during study time, can make a noticeable difference.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Time management has become a central life skill in the digital age.
+                        </p>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+        <!-- FUTURE ARTICLES -->
+        <section class="section">
+            <h2 class="section-heading">The Future</h2>
+            <p class="section-note">
+                Articles that imagine more sustainable, calm and balanced ways of living with technology.
+            </p>
+
+            <div class="articles-list">
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Cities designed for walking</span>
+                        <span class="article-tag">Urban design</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Many future city plans emphasise short walking distances to schools, shops and parks.
+                            The idea is to reduce dependence on cars and rebuild a sense of neighbourhood,
+                            where basic needs can be reached without long commutes.
+                        </p>
+                        <p>
+                            This type of planning can also make cities more inclusive, especially for children,
+                            older adults and people who do not drive. Streets become not only routes but also
+                            social spaces where people can meet safely and comfortably.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Mobility is not only about speed, but also about comfort and access.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Classrooms that adjust to the learner</span>
+                        <span class="article-tag">Education</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Future classrooms may combine human teaching with adaptive systems that suggest
+                            exercises, examples and explanations based on each student’s progress. Instead of
+                            everyone moving at exactly the same pace, some tasks could be personalised.
+                        </p>
+                        <p>
+                            Teachers would still guide the learning process, but with more precise information
+                            about where students struggle or advance quickly. Technology, in this scenario,
+                            becomes a tool for fairness, helping to close gaps instead of widening them.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Personalisation could make learning paths more fair and efficient.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Technology that invites pauses</span>
+                        <span class="article-tag">Well-being</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Some designers imagine future apps that gently encourage breaks, limit unnecessary alerts
+                            and focus attention on one task at a time. Instead of competing for every second of attention,
+                            digital tools could be created with mental health in mind.
+                        </p>
+                        <p>
+                            This might include default “quiet hours”, visual designs that avoid constant stimulation,
+                            and clearer options for disconnecting without losing important information.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> A healthier digital environment would help people protect their focus.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="article">
+                    <summary class="article-summary">
+                        <span class="article-title">Carrying the past into the future</span>
+                        <span class="article-tag">Perspective</span>
+                    </summary>
+                    <div class="article-body">
+                        <p>
+                            Even as tools and routines change, many values from earlier generations remain relevant:
+                            patience, community ties, and the ability to concentrate on one meaningful task.
+                            Remembering these qualities can guide how we design and use future technologies.
+                        </p>
+                        <p>
+                            A thoughtful future would combine these older strengths with new possibilities,
+                            instead of replacing one completely with the other. In this way, progress becomes
+                            a conversation between times, not a break from what came before.
+                        </p>
+                        <p class="article-key">
+                            <span>Key idea:</span> Progress is strongest when it respects what came before.
+                        </p>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            Articles page · Big Changes: From the Past to the Future
+        </footer>
+
+    </div>
+
+    <script>
+        // أزرار فتح/إغلاق جميع المقالات
+        const openAllBtn = document.getElementById('openAll');
+        const closeAllBtn = document.getElementById('closeAll');
+        const articles = document.querySelectorAll('details.article');
+
+        openAllBtn.addEventListener('click', () => {
+            articles.forEach(a => a.open = true);
+        });
+
+        closeAllBtn.addEventListener('click', () => {
+            articles.forEach(a => a.open = false);
+        });
+    </script>
+</body>
+</html>

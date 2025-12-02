@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Big Changes: From the Past to the Future</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Elegant Serif Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Soft Mocha Palette */
+            --bg: #e6e0da;          /* خلفية رئيسية دافئة بدون أبيض */
+            --card-bg: #f3eee8;      /* بطاقات هادئة */
+            --accent: #463f3a;       /* عناوين قوية بدون سواد */
+            --accent-soft: #bcb8b1;  /* حدود/تمييز ناعم */
+            --text-main: #2d2b29;    /* نص أساسي */
+            --text-muted: #7a726c;   /* نص خافت */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Playfair Display", serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.65;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .page {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
+        }
+
+        /* NAVBAR */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 26px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-box {
+    height: 46px;                       /* ارتفاع ثابت مناسب للصورة */
+    max-width: 230px;                   /* عرض مستطيل يناسب اللوقو */
+    padding: 4px 10px;                  /* مسافة خفيفة حول الشعار */
+    border: 1px solid var(--accent-soft);
+    background: #f7f4f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-box img {
+    height: 100%;                       /* يمشي مع الارتفاع */
+    width: auto;                        /* العرض يتكيّف مع النسبة الأصلية */
+    display: block;
+}
+
+
+        .nav-title {
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 13px;
+            color: var(--accent);
+        }
+
+        .nav-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+            font-size: 14px;
+        }
+
+        .nav-links a.current {
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #82796f, #5e574f);
+            border-radius: 0;
+            padding: 28px 22px;
+            color: #fff;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+            margin-bottom: 26px;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.14);
+            padding: 6px 12px;
+            margin-bottom: 12px;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            opacity: 0.94;
+            margin-bottom: 12px;
+        }
+
+        .hero-buttons {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #f2ede6;
+            color: #4b4640;
+            padding: 8px 18px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #f2ede6;
+            color: #fff;
+            padding: 8px 18px;
+            cursor: pointer;
+        }
+
+        /* SECTIONS */
+        .section {
+            background: var(--card-bg);
+            padding: 20px 18px;
+            margin-bottom: 26px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+            border-top: 3px solid var(--accent-soft);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            margin-bottom: 4px;
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .section-body {
+            font-size: 15px;
+        }
+
+        .section-body p + p {
+            margin-top: 8px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        @media (min-width: 720px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: #ece6df;
+            border: 1px solid #c8c1bb;
+            padding: 14px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #423f3a;
+        }
+
+        /* MEDIA */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .media-thumb {
+            background: #d9d3cd;
+            padding-top: 72%;
+            position: relative;
+            text-align: center;
+            font-size: 12px;
+            color: #4b4743;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-thumb span {
+            position: absolute;
+            padding: 4px 6px;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #6d665f;
+            padding-top: 12px;
+            border-top: 1px solid var(--accent-soft);
+        }
+
+        .footer-name {
+            margin-top: 6px;
+            font-size: 13px;
+        }
+
+        .footer-name span {
+            font-weight: 600;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- NAVBAR -->
+        <header class="nav">
+            <div class="nav-left">
+                <!-- استبدلي logo.png باسم ملف الشعار لو مختلف -->
+                <div class="logo-box">
+                    <img src="C:\Users\alasi\Desktop\eng_project\image\WhatsApp Image 2025-12-02 at 7.58.44 AM.jpeg">
+                </div>
+                <div>
+                    <div class="nav-title">Interactive Magazine</div>
+                    <div class="nav-subtitle">Big Changes: From the Past to the Future</div>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#past">Past</a>
+                <a href="#present">Present</a>
+                <a href="#future">Future</a>
+                <a href="#media">Media</a>
+                <a href="#resources">Sources</a>
+                <a href="articles.html">Articles</a>
+            </nav>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="badge">STUDENT DIGITAL MAGAZINE</div>
+            <h1 class="hero-title">Big Changes: From the Past to the Future</h1>
+            <p class="hero-subtitle">
+                A curated, elegant look at how daily life, education and cities have transformed over time,
+                with a focus on what changed in practice, not only in theory.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="window.location.href='articles.html'">
+                    Read Articles
+                </button>
+                <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+                    Overview
+                </button>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <h2 class="section-title">About this page</h2>
+            <p class="section-subtitle">Purpose & structure</p>
+
+            <div class="section-body">
+                <p>
+                    This magazine-style page presents a soft, simplified overview of how our world has shifted across different
+                    periods. The intention is not to provide long academic analysis, but clear snapshots that invite reflection.
+                </p>
+                <p>
+                    Each section highlights a theme in education, communication, or city life, allowing readers to compare
+                    earlier generations with our current moment—and consider what the future may hold. A separate articles
+                    page offers longer, interactive texts for deeper reading.
+                </p>
+            </div>
+        </section>
+
+        <!-- PAST -->
+        <section id="past" class="section">
+            <h2 class="section-title">The Past</h2>
+            <p class="section-subtitle">Slower rhythms & simpler tools</p>
+
+            <div class="section-body">
+                <p>
+                    Earlier decades were defined by slower communication, shared resources in schools, and a more intimate
+                    relationship with local communities. These brief pieces offer a glimpse into that world before the
+                    appearance of permanent connectivity.
+                </p>
+
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3 class="card-title">Shared Textbooks</h3>
+                        <p class="card-text">
+                            Students often relied on one or two books per class. Lessons were absorbed through handwriting,
+                            repetition and the teacher’s voice—not through recorded content or downloadable slides.
+                            When a book was shared between many students, each opportunity to use it felt important,
+                            and note-taking became a central study skill rather than a secondary habit.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Letters & Postcards</h3>
+                        <p class="card-text">
+                            Communication traveled slowly, and receiving a letter could carry emotional weight.
+                            News about exams, work or travel arrived days or weeks after it was written, so people
+                            learned to live with uncertainty. A short handwritten page could be re-read many times
+                            and carefully stored as part of a family’s private history.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Quieter Streets</h3>
+                        <p class="card-text">
+                            Cities were smaller, nights were darker, and shops were often community-run rather than corporate.
+                            Many daily routines stayed within walking distance of home. This did not make life easier in every
+                            way, but it created a different sense of distance, noise and pace compared with modern traffic and
+                            crowded commercial centres.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESENT -->
+        <section id="present" class="section">
+            <h2 class="section-title">The Present</h2>
+            <p class="section-subtitle">Constant connectivity</p>
+
+            <div class="section-body">
+                <p>
+                    Today’s pace is fast—information-rich, technology-heavy, and globally connected. Most people carry
+                    a device that combines phone, camera, library and entertainment platform in one object, making
+                    separation between activities more difficult.
+                </p>
+
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3 class="card-title">Digital Learning</h3>
+                        <p class="card-text">
+                            Online materials, videos and platforms have changed how students study and access knowledge.
+                            A single lesson may involve a mix of live explanation, recorded clips, online quizzes and
+                            shared documents. These tools can support different learning styles, but they also depend
+                            on self-discipline and reliable internet access.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Online Social Life</h3>
+                        <p class="card-text">
+                            Friendships can form and continue entirely through screens. Group chats, voice notes and calls
+                            make it possible to stay in touch across long distances, yet many people still report moments
+                            of isolation. Being surrounded by notifications is not always the same as feeling understood
+                            or truly heard.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Smarter Cities</h3>
+                        <p class="card-text">
+                            Sensors, data dashboards and integrated systems help manage urban movement and safety.
+                            Traffic control, lighting and public transport can be adjusted using real-time information.
+                            Residents may not see these processes directly, but they notice them when their route shortens,
+                            their bus arrives on time or an area becomes more organised.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUTURE -->
+        <section id="future" class="section">
+            <h2 class="section-title">The Future</h2>
+            <p class="section-subtitle">Thoughtful possibilities</p>
+
+            <div class="section-body">
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3 class="card-title">Sustainable Cities</h3>
+                        <p class="card-text">
+                            Future designs emphasize greenery, clean transport, and improved public spaces.
+                            Instead of expanding roads endlessly, planners discuss walkable neighbourhoods,
+                            safer cycling routes and accessible public transit. The goal is not only efficiency,
+                            but also a calmer everyday experience for residents.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Personalized Education</h3>
+                        <p class="card-text">
+                            Technology may help tailor learning paths to individual needs—not replace teachers.
+                            Adaptive platforms could suggest exercises at the right level for each student, while
+                            teachers focus on guidance, motivation and human connection in the classroom.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Balanced Digital Life</h3>
+                        <p class="card-text">
+                            Healthier boundaries with technology may become essential. Instead of constant alerts,
+                            future devices and apps might be designed to respect attention, encourage breaks and
+                            support long periods of focus or rest without interruption.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA (images only) -->
+        <section id="media" class="section">
+            <h2 class="section-title">Media</h2>
+            <p class="section-subtitle">Image gallery</p>
+
+            <div class="section-body">
+                <p style="font-size: 14px; margin-bottom: 8px;">
+                    The images below can be replaced with your own visuals that illustrate the past, present and future.
+                </p>
+                <div class="media-gallery">
+                    <div class="media-thumb"><span>Past classroom</span></div>
+                    <div class="media-thumb"><span>Modern city</span></div>
+                    <div class="media-thumb"><span>Future concept</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOURCES -->
+        <section id="resources" class="section">
+            <h2 class="section-title">Resources</h2>
+            <p class="section-subtitle">English sources</p>
+
+            <div class="section-body">
+                <ul style="font-size: 14px;">
+                    <li><a href="#">United Nations – Sustainable Cities</a></li>
+                    <li><a href="#">Britannica – History of Technology</a></li>
+                    <li><a href="#">National Geographic Kids</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div>Interactive Magazine · Big Changes Project</div>
+            <div class="footer-name">Created by: <span>شهد الصفار ، فاطمة العسيري</span></div>
+        </footer>
+
+    </div>
+</body>
+</html>
